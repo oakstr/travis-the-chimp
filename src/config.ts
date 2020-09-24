@@ -10,4 +10,4 @@ export const discordToken = process.env.DISCORD_TOKEN;
 /** Perspective API key. */
 export const perspectiveApiKey = process.env.GOOGLE_API_KEY;
 
-export const thresholds = {[AttributeType.Toxicity]: {ban: 0.80, kick: 0.70, delete: 0.50}};
+export const thresholds = {[AttributeType.Toxicity]: {ban: 0.8, kick: 0.7, delete: 0.5}};

@@ -4,6 +4,8 @@ import {AttributeType, CommentType} from '../lib/perspective-api';
 import {logger} from '../logger';
 import {perspective} from '../perspective-api';
 
+/* eslint-disable max-depth */
+
 /**
  * Emitted whenever a message is created.
  * @param message The created message
@@ -35,34 +37,41 @@ export async function onMessage(message: Message): Promise<void> {
 					/** The reason used on Discord for automated moderation actions. */
 					const reason = `Message was scored ${Math.round(score * 100)}% for ${key}`;
 
+					/* eslint-disable no-await-in-loop */
 					switch (punishment) {
 						case 'ban':
 							try {
 								await message.member.ban({days: 1, reason});
 							} catch (error) {
-								logger.error(`unable to ban the user ${message.author.tag} (${message.author.id})`);
+								logger.error(`unable to ban the user ${message.author.tag} (${message.author.id})`, error);
 							}
+
 							break;
 						case 'kick':
 							try {
 								await message.member.kick(reason);
 							} catch (error) {
-								logger.error(`unable to kick the user ${message.author.tag} (${message.author.id})`);
+								logger.error(`unable to kick the user ${message.author.tag} (${message.author.id})`, error);
 							}
+
 							break;
 						case 'delete':
 							try {
 								await message.delete({reason});
 							} catch (error) {
-								logger.error(`unable to delete the message ${message.id} by the user ${message.author.tag} (${message.author.id})`);
+								logger.error(`unable to delete the message ${message.id} by the user ${message.author.tag} (${message.author.id})`, error);
 							}
+
 							break;
 						default:
 							throw new TypeError('Default condition for switch statement was reached, this should never happen');
 					}
+
 					break;
 				}
 			}
 		}
 	}
 }
+/* eslint-enable max-depth */
+/* eslint-enable no-await-in-loop */
