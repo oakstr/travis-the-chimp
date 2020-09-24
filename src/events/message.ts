@@ -7,7 +7,9 @@ import {perspective} from '../perspective-api';
 async function notify(punishment: string, message: Message, reason: {type: AttributeType; score: number}) {
 	const channel = message.guild?.channels.cache.find(it => it.name === 'travis-logs' && it.type === 'text') as TextChannel;
 	return channel?.send(
-		`The following message resulted in a ${punishment} action because it was scored ${Math.round(reason.score * 100)}% for ${reason.type}:\n${message.content}`
+		`The following message from ${message.author.tag} (${message.author.id}) resulted in a ${punishment} action because it was scored ${Math.round(
+			reason.score * 100
+		)}% for ${reason.type}:\n${message.content}`
 	);
 }
 
