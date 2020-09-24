@@ -8,15 +8,15 @@
 		"url": "https://github.com/blazingbulldogs/travis-the-chimp/issues"
 	},
 	"dependencies": {
-		"convert": "^1.0.1",
+		"convert": "1.0.1",
 		"discord.js": "12.3.1",
-		"dotenv": "^8.2.0",
+		"dotenv": "8.2.0",
 		"got": "11.7.0",
-		"tslog": "^2.8.0"
+		"tslog": "2.8.0"
 	},
 	"description": "A Discord bot that uses the Perspective API to automatically moderate users without a role",
 	"devDependencies": {
-		"@types/ws": "^7.2.6",
+		"@types/ws": "7.2.6",
 		"prettier": "2.0.4",
 		"ts-node": "9.0.0",
 		"type-fest": "0.16.0",
