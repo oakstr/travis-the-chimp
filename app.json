@@ -1,0 +1,25 @@
+{
+	"buildpacks": [
+		{
+			"url": "heroku/nodejs"
+		}
+	],
+	"description": "A Discord bot that uses the Perspective API to automatically moderate users without a role",
+	"env": {
+		"DISCORD_TOKEN": {
+			"description": "The token used to authenticate with the Discord API. Generate one here https://discord.com/developers/applications."
+		},
+		"GOOGLE_API_KEY": {
+			"description": "The API key used for Google services, like the Perspective API. Generate one here https://console.developers.google.com/apis/credentials."
+		}
+	},
+	"formation": {
+		"web": {
+			"quantity": 1,
+			"size": "free"
+		}
+	},
+	"keywords": ["discord", "moderation", "automated", "perspective api"],
+	"name": "Travis the Chimp",
+	"repository": "https://github.com/blazingbulldogs/travis-the-chimp"
+}
