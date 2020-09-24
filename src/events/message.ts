@@ -1,8 +1,15 @@
-import {Message} from 'discord.js';
+import {Message, TextChannel} from 'discord.js';
 import {thresholds} from '../config';
 import {AttributeType, CommentType} from '../lib/perspective-api';
 import {logger} from '../logger';
 import {perspective} from '../perspective-api';
+
+async function notify(punishment: string, message: Message, reason: {type: AttributeType; score: number}) {
+	const channel = message.guild?.channels.cache.find(it => it.name === 'travis-logs' && it.type === 'text') as TextChannel;
+	return channel?.send(
+		`The following message resulted in a ${punishment} action because it was scored ${Math.round(reason.score * 100)}% for ${reason.type}:\n${message.content}`
+	);
+}
 
 /* eslint-disable max-depth */
 
@@ -42,6 +49,7 @@ export async function onMessage(message: Message): Promise<void> {
 						case 'ban':
 							try {
 								await message.member.ban({days: 1, reason});
+								await notify(punishment, message, {score, type: key});
 							} catch (error) {
 								logger.error(`unable to ban the user ${message.author.tag} (${message.author.id})`, error);
 							}
@@ -50,6 +58,7 @@ export async function onMessage(message: Message): Promise<void> {
 						case 'kick':
 							try {
 								await message.member.kick(reason);
+								await notify(punishment, message, {score, type: key});
 							} catch (error) {
 								logger.error(`unable to kick the user ${message.author.tag} (${message.author.id})`, error);
 							}
@@ -58,6 +67,7 @@ export async function onMessage(message: Message): Promise<void> {
 						case 'delete':
 							try {
 								await message.delete({reason});
+								await notify(punishment, message, {score, type: key});
 							} catch (error) {
 								logger.error(`unable to delete the message ${message.id} by the user ${message.author.tag} (${message.author.id})`, error);
 							}
