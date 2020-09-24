@@ -37,7 +37,6 @@
 	"scripts": {
 		"build": "tsc",
 		"lint": "xo",
-		"postbuild": "cp .env tsc_output/",
 		"prebuild": "rm -rf tsc_output",
 		"start": "node tsc_output/src/index.js",
 		"style": "prettier --ignore-path .gitignore --check ."
