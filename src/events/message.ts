@@ -59,7 +59,7 @@ export async function onMessage(message: Message): Promise<void> {
 							break;
 						case 'kick':
 							try {
-								await message.member.kick(reason);
+								await Promise.all([message.member.kick(reason), message.delete({reason})]);
 								await notify(punishment, message, {score, type: key});
 							} catch (error) {
 								logger.error(`unable to kick the user ${message.author.tag} (${message.author.id})`, error);
