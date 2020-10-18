@@ -20,7 +20,7 @@ async function notify(punishment: string, message: Message, reason: {type: Attri
  * @param message The created message
  */
 export async function onMessage(message: Message): Promise<void> {
-	if (message.content.length !== 0 && message.member?.roles.cache.size === 1) {
+	if (message.content.length > 0 && message.member?.roles.cache.size === 1) {
 		const analysis = await perspective.analyzeComment<AttributeType.Toxicity>({
 			comment: {text: message.content, type: CommentType.PlainText},
 			requestedAttributes: {[AttributeType.Toxicity]: {}}
@@ -52,7 +52,7 @@ export async function onMessage(message: Message): Promise<void> {
 							try {
 								await message.member.ban({days: 1, reason});
 								await notify(punishment, message, {score, type: key});
-							} catch (error) {
+							} catch (error: unknown) {
 								logger.error(`unable to ban the user ${message.author.tag} (${message.author.id})`, error);
 							}
 
@@ -61,7 +61,7 @@ export async function onMessage(message: Message): Promise<void> {
 							try {
 								await Promise.all([message.member.kick(reason), message.delete({reason})]);
 								await notify(punishment, message, {score, type: key});
-							} catch (error) {
+							} catch (error: unknown) {
 								logger.error(`unable to kick the user ${message.author.tag} (${message.author.id})`, error);
 							}
 
@@ -70,7 +70,7 @@ export async function onMessage(message: Message): Promise<void> {
 							try {
 								await message.delete({reason});
 								await notify(punishment, message, {score, type: key});
-							} catch (error) {
+							} catch (error: unknown) {
 								logger.error(`unable to delete the message ${message.id} by the user ${message.author.tag} (${message.author.id})`, error);
 							}
 

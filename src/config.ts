@@ -1,8 +1,8 @@
 import * as dotenv from 'dotenv';
-import {join as joinPaths} from 'path';
+import path from 'path';
 import {AttributeType} from './lib/perspective-api';
 
-dotenv.config({path: joinPaths(__dirname, '..', '.env')});
+dotenv.config({path: path.join(__dirname, '..', '.env')});
 
 /** Token used to authenticate with the Discord API. */
 export const discordToken = process.env.DISCORD_TOKEN;
