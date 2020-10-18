@@ -19,7 +19,7 @@
 		"@types/ws": "7.2.7",
 		"prettier": "2.0.4",
 		"ts-node": "9.0.0",
-		"type-fest": "0.17.0",
+		"type-fest": "0.18.0",
 		"typescript": "3.9.7",
 		"xo": "0.34.0"
 	},
