@@ -8,7 +8,7 @@
 		"url": "https://github.com/blazingbulldogs/travis-the-chimp/issues"
 	},
 	"dependencies": {
-		"convert": "1.0.1",
+		"convert": "1.1.1",
 		"discord.js": "12.4.1",
 		"dotenv": "8.2.0",
 		"got": "11.8.0",
