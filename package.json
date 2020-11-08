@@ -12,7 +12,7 @@
 		"discord.js": "12.4.1",
 		"dotenv": "8.2.0",
 		"got": "11.8.0",
-		"tslog": "2.10.0"
+		"tslog": "2.11.0"
 	},
 	"description": "A Discord bot that uses the Perspective API to automatically moderate users without a role",
 	"devDependencies": {
