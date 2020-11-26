@@ -9,7 +9,7 @@
 	},
 	"dependencies": {
 		"convert": "1.1.1",
-		"discord.js": "12.4.1",
+		"discord.js": "12.5.1",
 		"dotenv": "8.2.0",
 		"got": "11.8.0",
 		"tslog": "2.11.0"
