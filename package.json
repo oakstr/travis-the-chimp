@@ -17,7 +17,7 @@
 	"description": "A Discord bot that uses the Perspective API to automatically moderate users without a role",
 	"devDependencies": {
 		"@types/node": "14.14.10",
-		"@types/ws": "7.2.9",
+		"@types/ws": "7.4.0",
 		"eslint-plugin-prettier": "3.1.4",
 		"prettier": "2.2.0",
 		"ts-node": "9.0.0",
